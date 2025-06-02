@@ -3,8 +3,8 @@
     <h2>Login</h2>
     <form @submit.prevent="handleLogin">
       <div class="form-group">
-        <label for="username">Usuário:</label>
-        <input type="text" id="username" v-model="credentials.username" required />
+        <label for="email">Usuário:</label>
+        <input type="text" id="email" v-model="credentials.email" required />
       </div>
       <div class="form-group">
         <label for="password">Senha:</label>
@@ -36,7 +36,7 @@ export default {
     const router = useRouter();
 
     const credentials = ref({
-      username: "",
+      email: "",
       password: "",
       rememberMe: false,
     });

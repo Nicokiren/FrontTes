@@ -14,7 +14,7 @@
           <h4>{{ video.name }}</h4>
           <p>{{ video.description }}</p>
           <div class="video-wrapper">
-            <video controls :src="`http://localhost:3000${video.url}`" class="course-video">
+            <video controls :src="`http://localhost:3000${video.video}`" class="course-video">
               Seu navegador não suporta a tag de vídeo.
             </video>
           </div>

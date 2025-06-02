@@ -43,7 +43,7 @@ export default {
     const router = useRouter();
 
     const registration = ref({
-      username: "",
+      name: "",
       email: "",
       password: "",
       role: "student", // Default role

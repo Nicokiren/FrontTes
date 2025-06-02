@@ -3,7 +3,7 @@
     <h2>Login</h2>
     <form @submit.prevent="handleLogin">
       <div class="form-group">
-        <label for="email">Usuário:</label>
+        <label for="email">Email:</label>
         <input type="text" id="email" v-model="credentials.email" required />
       </div>
       <div class="form-group">

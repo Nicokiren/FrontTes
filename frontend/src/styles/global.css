@@ -1,17 +1,24 @@
-/* Variáveis de cores (mantidas conforme o original) */
+/* ==========================
+   Variáveis de cores (mantidas conforme o original)
+   ========================== */
 :root {
-  --primary: #3498db;    /* Azul principal - Ideal para ações primárias, links */
-  --secondary: #2ecc71;  /* Verde secundário - Bom para sucesso, ações positivas alternativas */
-  --dark: #2c3e50;       /* Ardósia escuro - Para texto principal, fundos escuros (navbar) */
-  --light: #ecf0f1;     /* Cinza claro - Fundo principal do corpo */
-  --accent: #e74c3c;     /* Vermelho - Para ações destrutivas, alertas, destaques importantes */
-  --text-light: #ffffff; /* Branco - Para texto sobre fundos escuros */
-  --text-muted: #7f8c8d; /* Cinza médio - Para texto secundário, placeholders */
+  --primary: #185278;      /* Azul principal – para ações primárias, links */
+  --primary-dark: #1b5e8b; /* Tom mais escuro do primário (hover) */
+  --secondary: #2ecc71;    /* Verde secundário – para sucesso, ações alternativas */
+  --secondary-dark: #27ae60; /* Tom mais escuro do secundário (hover) */
+  --dark: #2c3e50;         /* Ardósia escuro – texto principal, navbar */
+  --light: #ecf0f1;        /* Cinza claro – fundo geral da página */
+  --accent: #e74c3c;       /* Vermelho – ações destrutivas, alertas */
+  --accent-dark: #c0392b;  /* Tom mais escuro do acento (hover) */
+  --text-light: #ffffff;   /* Branco – texto sobre fundos escuros */
+  --text-muted: #7f8c8d;   /* Cinza médio – texto secundário, placeholders */
   --border-color: #bdc3c7; /* Cinza para bordas sutis */
-  --card-bg: #ffffff;    /* Fundo branco para cards e formulários */
+  --card-bg: #ffffff;      /* Fundo branco para cards e formulários */
 }
 
-/* Reset e estilos base aprimorados */
+/* ==========================
+   Reset e estilos base
+   ========================== */
 * {
   margin: 0;
   padding: 0;
@@ -26,27 +33,51 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--light);
   color: var(--dark);
-  line-height: 1.7; /* Ligeiramente aumentado para melhor legibilidade */
-  font-size: 16px; /* Definir um tamanho base */
+  line-height: 1.7;      /* Mais espaço entre linhas para legibilidade */
+  font-size: 16px;       /* Tamanho base */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Container principal */
-.container {
-  width: 90%; /* Usar porcentagem para melhor fluidez */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem; /* Ajuste no padding vertical */
+/* ==========================
+   Container principal
+   ========================== */
+#app {
+  flex: 1; /* Faz o app ocupar toda a altura disponível */
 }
 
-/* Links */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+/* ==========================
+   Tipografia (títulos e parágrafos)
+   ========================== */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  font-weight: 600; /* Títulos com peso maior */
+  color: var(--dark);
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+p {
+  margin-bottom: 1rem;
+  color: #4b4b4b; /* Texto em cinza escuro para contraste suave */
+}
+
+/* ==========================
+   Links
+   ========================== */
 a {
   color: var(--primary);
   text-decoration: none;
@@ -54,46 +85,75 @@ a {
 }
 
 a:hover {
-  color: #2980b9; /* Um tom ligeiramente mais escuro do primário */
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
-/* Títulos */
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1rem;
-  line-height: 1.3;
-  font-weight: 600; /* Um pouco mais de peso para títulos */
+/* ==========================
+   Navbar
+   ========================== */
+.navbar {
+  background-color: var(--dark);
+  color: var(--text-light);
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-h1 { font-size: 2.8rem; }
-h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; } /* Títulos de seção */
-h3 { font-size: 1.8rem; }
-h4 { font-size: 1.4rem; }
-
-p {
-  margin-bottom: 1rem;
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Botões */
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  margin-left: 1.5rem;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover,
+.nav-links a.active-link {
+  color: var(--primary);
+}
+
+/* ==========================
+   Botões (componentização .btn)
+   ========================== */
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem; /* Ajuste no padding */
-  border-radius: 25px;    /* Raio de borda um pouco menor para versatilidade */
-  font-size: 1rem;        /* Tamanho de fonte base para botões */
+  padding: 0.75rem 1.5rem;  /* Espaçamento interno equilibrado */
+  border-radius: 25px;      /* Canto arredondado suave */
+  font-size: 1rem;          /* Tamanho de fonte base para botões */
   font-weight: bold;
   text-decoration: none;
   text-align: center;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-in-out;
   border: none;
   cursor: pointer;
-  line-height: 1.5; /* Para alinhar melhor o texto verticalmente */
+  line-height: 1.5;
 }
 
+/* Hover e Active para feedback visual */
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
-
 .btn:active {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -105,7 +165,7 @@ p {
   color: var(--text-light);
 }
 .btn-primary:hover {
-  background-color: #2980b9; /* Tom mais escuro do primário */
+  background-color: var(--primary-dark);
 }
 
 /* Botão Secundário (Verde) */
@@ -114,16 +174,16 @@ p {
   color: var(--text-light);
 }
 .btn-secondary:hover {
-  background-color: #27ae60; /* Tom mais escuro do secundário */
+  background-color: var(--secondary-dark);
 }
 
 /* Botão de Acento/Perigo (Vermelho) */
-.btn-accent, .btn-danger { /* Alias para perigo */
+.btn-accent, .btn-danger {
   background-color: var(--accent);
   color: var(--text-light);
 }
 .btn-accent:hover, .btn-danger:hover {
-  background-color: #c0392b; /* Tom mais escuro do acento */
+  background-color: var(--accent-dark);
 }
 
 /* Botão Outline (Exemplo com cor primária) */
@@ -143,7 +203,9 @@ p {
   font-size: 1.15rem;
 }
 
-/* Formulários */
+/* ==========================
+   Formulários
+   ========================== */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -165,7 +227,7 @@ select {
   width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--border-color);
-  border-radius: 8px; /* Bordas mais suaves */
+  border-radius: 8px;      /* Bordas arredondadas */
   font-size: 1rem;
   background-color: var(--text-light);
   color: var(--dark);
@@ -181,7 +243,7 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25); /* Sombra de foco sutil */
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
 }
 
 textarea.form-control {
@@ -189,13 +251,25 @@ textarea.form-control {
   resize: vertical;
 }
 
-/* Cards */
+/* Checkbox “Lembrar-me” */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.form-check input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* ==========================
+   Cards
+   ========================== */
 .card {
   background-color: var(--card-bg);
-  border-radius: 10px; /* Bordas mais suaves e consistentes */
+  border-radius: 10px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais sutil */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -211,60 +285,25 @@ textarea.form-control {
 }
 
 .card-text {
-  color: #555; /* Um cinza um pouco mais escuro para texto de card */
+  color: #555; /* Cinza escuro para texto de descrição */
   margin-bottom: 1rem;
 }
 
 .card-actions {
   margin-top: 1rem;
   display: flex;
-  gap: 0.5rem; /* Espaço entre botões de ação no card */
-  flex-wrap: wrap; /* Para botões quebrarem em telas menores */
+  gap: 0.5rem;   /* Espaço entre botões de ação no card */
+  flex-wrap: wrap;
 }
+
 .card-actions .btn {
-  font-size: 0.9rem; /* Botões de card ligeiramente menores */
+  font-size: 0.9rem;    /* Botões de card ligeiramente menores */
   padding: 0.6rem 1.2rem;
 }
 
-
-/* Navbar (Exemplo básico, você pode ter um componente específico) */
-.navbar {
-  background-color: var(--dark);
-  color: var(--text-light);
-  padding: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  /* position: sticky; /* Opcional: para navbar fixa no topo */
-  /* top: 0; */
-  /* z-index: 1000; */
-}
-
-.navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar-brand {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--text-light);
-  text-decoration: none;
-}
-
-.nav-links a {
-  color: var(--text-light);
-  margin-left: 1.5rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-links a:hover,
-.nav-links a.active-link { /* Adicione a classe 'active-link' ao link ativo */
-  color: var(--primary); /* Destaca o link ativo ou no hover */
-}
-
-/* Mensagens de Feedback (para erros, sucesso, etc.) */
+/* ==========================
+   Mensagens de feedback (alertas)
+   ========================== */
 .message {
   padding: 1rem 1.5rem;
   margin: 1rem 0;
@@ -274,7 +313,7 @@ textarea.form-control {
 }
 .message-success {
   background-color: #d4edda; /* Fundo verde claro */
-  color: #155724;      /* Texto verde escuro */
+  color: #155724;            /* Texto verde escuro */
   border: 1px solid #c3e6cb;
 }
 .message-error {
@@ -284,18 +323,38 @@ textarea.form-control {
 }
 .message-info {
   background-color: #cce5ff; /* Fundo azul claro */
-  color: #004085;      /* Texto azul escuro */
+  color: #004085;            /* Texto azul escuro */
   border: 1px solid #b8daff;
 }
 
+/* ==========================
+   Footer (exemplo simples)
+   ========================== */
+.footer {
+  background-color: var(--dark);
+  color: var(--text-light);
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: auto; /* Cola o footer ao fim da página */
+}
+.footer p {
+  font-size: 0.9rem;
+}
 
-/* Utilitários */
-.text-center { text-align: center; }
-.mt-1 { margin-top: 1rem; }
-.mb-1 { margin-bottom: 1rem; }
-/* Adicione mais utilitários conforme necessário */
+/* ==========================
+   Utilitários
+   ========================== */
+.text-center  { text-align: center; }
+.mt-1         { margin-top: 1rem; }
+.mb-1         { margin-bottom: 1rem; }
+.mt-2         { margin-top: 2rem; }
+.mb-2         { margin-bottom: 2rem; }
+.p-1          { padding: 1rem; }
+.p-2          { padding: 2rem; }
 
-/* Responsividade */
+/* ==========================
+   Responsividade
+   ========================== */
 @media (max-width: 992px) {
   h1 { font-size: 2.4rem; }
   h2 { font-size: 1.9rem; }
@@ -304,12 +363,11 @@ textarea.form-control {
 
 @media (max-width: 768px) {
   .container {
-    padding: 1rem 1rem; /* Padding menor em telas pequenas */
+    padding: 1rem 1rem;
   }
   h1 { font-size: 2rem; }
   h2 { font-size: 1.7rem; margin-bottom: 2rem; }
   h3 { font-size: 1.4rem; }
-
   .btn {
     font-size: 0.95rem;
     padding: 0.65rem 1.3rem;
@@ -318,7 +376,6 @@ textarea.form-control {
     font-size: 1.05rem;
     padding: 0.85rem 1.7rem;
   }
-
   .navbar .container {
     flex-direction: column;
     gap: 0.5rem;
@@ -334,10 +391,10 @@ textarea.form-control {
 @media (max-width: 576px) {
   body { font-size: 15px; }
   .card-actions {
-    flex-direction: column; /* Botões de card empilhados em telas muito pequenas */
+    flex-direction: column;
   }
   .card-actions .btn {
-    width: 100%; /* Botões ocupam largura total */
+    width: 100%;
     margin-bottom: 0.5rem;
   }
   .card-actions .btn:last-child {

@@ -44,9 +44,9 @@ export default {
     const handleLogin = async () => {
       const result = await authStore.login(credentials.value);
       if (result.success) {
-        router.push("/courses"); // Redirect to courses after successful login
+        router.push("/courses");
       } else {
-        // Error message is already handled by authStore.error and displayed in the template
+      alert("Ocorreu um erro ao fazer login. Por favor verifique as credenciais e tente novamente.");
       }
     };
 

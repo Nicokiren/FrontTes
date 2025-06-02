@@ -30,13 +30,13 @@
             class="course-card card"
         >
           <div class="card-content">
-            <h3 class="card-title">{{ course.name }}</h3>
+            <h3 class="card-title">{{ course.title }}</h3>
             <p class="card-text">{{ course.description }}</p>
           </div>
           <div class="card-actions">
             <router-link
                 :to="`/courses/${course.id}`"
-                class="btn btn-primary btn-sm"
+                class="btn btn-primary"
             >
               Ver Curso
             </router-link>

@@ -6,10 +6,10 @@
         <router-link to="/" class="navbar-brand">Learn FDD</router-link>
 
         <div class="nav-links">
-          <router-link to="/" exact class="nav-item" active-class="active-link">
+          <!-- <router-link to="/" exact class="nav-item" active-class="active-link">
             Home
-          </router-link>
-          <router-link to="/courses" class="nav-item" active-class="active-link">
+          </router-link> -->
+          <router-link  v-if="authStore.isLoggedIn" to="/courses" class="nav-item" active-class="active-link">
             Cursos
           </router-link>
 
@@ -25,9 +25,9 @@
 
           <!-- Se JÁ estiver logado, exibe “Bem-vindo, usuário!” e botão Sair -->
           <template v-else>
-            <span class="nav-user">
-              Bem-vindo, {{ displayName }}!
-            </span>
+            <!-- <span class="nav-user">
+              Bem-vindo!
+            </span> -->
             <button @click="handleLogout" class="btn btn-accent logout-btn">
               Sair
             </button>

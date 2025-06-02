@@ -166,6 +166,7 @@ a:hover {
 }
 .btn-primary:hover {
   background-color: var(--primary-dark);
+  color: var(--text-light);
 }
 
 /* Botão Secundário (Verde) */
